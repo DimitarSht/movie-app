@@ -15,23 +15,20 @@ def main():
         print("Invalid arguments", file=sys.stderr)
         sys.exit(1)
 
-    with requests.get(f"{BASE_URL}/{media_type}/{time_window}", headers=HEADERS) as session:
-        results = []
+    results = []
 
-        if media_type == "all":
-            tv_data = fetch_trending("tv", time_window)
-            movie_data = fetch_trending("movie", time_window)
-            results = tv_data + movie_data
-        else:
-            media_type_api = "tv" if media_type == "tv" else "movie"
-            results = fetch_trending(media_type_api, time_window)
-
-        formatted_results = format_data(results)
-
-        if output_format == "csv":
-            output_csv(formatted_results)
-        else:
-            output_json(formatted_results)
+    if media_type == "all":
+        tv_data = fetch_trending("tv", time_window)
+        movie_data = fetch_trending("movie", time_window)
+        results = tv_data + movie_data
+    else:
+        media_type_api = "tv" if media_type == "tv" else "movie"
+        results = fetch_trending(media_type_api, time_window)
+    formatted_results = format_data(results)
+    if output_format == "csv":
+        output_csv(formatted_results)
+    else:
+        output_json(formatted_results)
 
 if __name__ == "__main__":
     main()
