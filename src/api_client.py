@@ -14,5 +14,5 @@ def fetch_trending(media_type: str, time_window: str) -> List[Dict]:
             data = response.json()
             return data.get("results", [])
         else:
-            print(f"Failed to fetch {media_type} data: {response.status}", file=sys.stderr)
+            print(f"Failed to fetch {media_type} data: {response.status_code}", file=sys.stderr)
             return []

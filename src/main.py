@@ -20,8 +20,8 @@ def main():
         movie_data = fetch_trending("movie", time_window)
         results = tv_data + movie_data
     else:
-        results = fetch_trending(media_type, time_window)
-    
+        media_type_api = "tv" if media_type == "tv" else "movie"
+        results = fetch_trending(media_type_api, time_window)
     formatted_results = format_data(results)
     if output_format == "csv":
         output_csv(formatted_results)
