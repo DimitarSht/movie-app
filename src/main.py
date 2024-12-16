@@ -21,6 +21,7 @@ def main():
         results = tv_data + movie_data
     else:
         results = fetch_trending(media_type, time_window)
+    
     formatted_results = format_data(results)
     if output_format == "csv":
         output_csv(formatted_results)
