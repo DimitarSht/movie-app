@@ -1,8 +1,6 @@
 import sys
-import requests
 from output_writer import *
 from data_processor import *
-from typing import List, Dict
 from api_client import *
 
 def main():
